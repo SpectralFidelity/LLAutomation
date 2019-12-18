@@ -17,12 +17,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const snekfetch = require('snekfetch');
 const rbx = require('noblox.js');
-const bloxy = require('bloxy');
-  const bloxyClient = new bloxy.Client();
-
-  await bloxyClient.login({
-    cookie: `${rblxCookie}`	
-  }).catch(err => console.log("Looks like I am not logging in"));
 
 
 const firebase = require("firebase");
@@ -41,6 +35,14 @@ bot.on('ready', () => {
 
 bot.on('message', async message => {
 
+  const bloxy = require('bloxy');
+  const bloxyClient = new bloxy.Client();
+
+  await bloxyClient.login({
+    cookie: `${rblxCookie}`	
+  }).catch(err => console.log("Looks like I am not logging in"));
+
+  
   const args = message.content.split(/[ ]+/)
   const verifiedRole = message.guild.roles.find(role => role.name === "Verified");
   const verificationCode = ['apple', 'rain', 'dog', 'cat', 'food','yum','pizza','raindrop','snow','birthday','cake','burger','soda','ice','no','yes','orange','pear','plum'];
